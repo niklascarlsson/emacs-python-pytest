@@ -117,7 +117,7 @@ When non-nil only ‘test_foo()’ will match, and nothing else."
   "Current command; used in python-pytest-mode buffers.")
 
 ;;;###autoload (autoload 'python-pytest-dispatch "python-pytest" nil t)
-(define-transient-command python-pytest-dispatch ()
+(transient-define-prefix python-pytest-dispatch ()
   "Show popup for running pytest."
   :man-page "pytest"
   :incompatible '(("--exitfirst" "--maxfail="))
@@ -510,7 +510,7 @@ Example: ‘MyABCThingy.__repr__’ becomes ‘test_my_abc_thingy_repr’."
    func
    (s-replace "." "_" it)
    (s-snake-case it)
-   (s-replace-regexp "_\+" "_" it)
+   (s-replace "_\+" "_" it)
    (s-chop-suffix "_" it)
    (s-chop-prefix "_" it)
    (format "test_%s" it)))
